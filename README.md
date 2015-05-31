@@ -8,4 +8,4 @@
 - use jade to erb|haml
 - use nodemailer
 - use mongoose to mongoid(ar)
-
+- use config
