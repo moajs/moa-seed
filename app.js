@@ -10,6 +10,8 @@ var users = require('./config/routes/users');
 
 var app = express();
 
+require('./config/db');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'jade');
