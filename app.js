@@ -10,7 +10,7 @@ var users = require('./config/routes/users');
 
 var app = express();
 
-require('./config/db');
+require('./config/mongo');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app/views'));
