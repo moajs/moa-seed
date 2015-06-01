@@ -2,8 +2,7 @@ extends ../layouts/layout
 
 block content
   h1 New movie
-
-  form(id='movie-new-form',action="/movies", method="post",role='form')
-    include movie
+  
+  include movie
 
   a(href='/movies') Back
