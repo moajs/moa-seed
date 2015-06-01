@@ -41,6 +41,17 @@ exports.show = function (req, res, next) {
 exports.edit = function (req, res, next) {
   console.log(req.method + ' /movies/:id/edit => edit, query: ' + JSON.stringify(req.query) + 
     ', params: ' + JSON.stringify(req.params));
+    
+  var id = req.params.id; 
+  
+  Movie.getById(id, function(err, movie){
+    console.log(movie);
+    movie._action = 'edit';
+    
+    res.render('movies/edit', {
+      movie : movie
+    })
+  });
 };
 
 exports.create = function (req, res, next) {
@@ -62,6 +73,25 @@ exports.create = function (req, res, next) {
 exports.update = function (req, res, next) {
   console.log(req.method + ' /movies/:id => update, query: ' + JSON.stringify(req.query) + 
     ', params: ' + JSON.stringify(req.params) + ', body: ' + JSON.stringify(req.body));
+    
+    var id = req.params.id; 
+  
+    Movie.updateById(id,{
+      name : req.body.name,
+      age  : req.body.age
+    }, function(err, movie){
+      console.log(movie);
+    
+      res.json({
+        data:{
+          redirect : '/movies/' + id
+        },
+        status:{
+          code : 0,
+          msg  : 'delete success!'
+        }
+      });
+    });
 };
 
 exports.destroy = function (req, res, next) {
