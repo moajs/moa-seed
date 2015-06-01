@@ -1,15 +1,17 @@
 /**
- * Created by Sandeep on 01/06/14.
+ * Created by alfred on 01/06/14.
  */
 
-var mongoose=require('mongoose');
-var Schema=mongoose.Schema;
+var mongoose    = require('mongoose');
+var Schema      = mongoose.Schema;
+var MongooseDao = require('mongoosedao');
 
-var movieSchema=new Schema({
-    title:String,
-    releaseYear:'String',
-    director:'String',
-    genre:'String'
+var movieSchema = new Schema({
+    name:String,
+    age:String
 });
 
-module.exports=mongoose.model('Movie',movieSchema);
+var Movie = mongoose.model('Movie', movieSchema);
+var MovieDao = new MongooseDao(Movie);
+ 
+module.exports = MovieDao;

@@ -6,9 +6,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mount = require('mount-routes');
 
+require('./config/mongo');
+
+
 var app = express();
 
-require('./config/mongo');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app/views'));
