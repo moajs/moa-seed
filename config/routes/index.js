@@ -1,9 +1,20 @@
-var express = require('express');
-var router = express.Router();
+var routes = require('require-directory')(module);
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
 
-module.exports = router;
+
+function mount(app){
+  
+  for (var k in routes) {
+    console.log('xxx=' + k);
+    console.log('xxx=' + routes[k]);
+  
+    if(k === 'home'){
+      app.use('/', routes[k]);
+    }else{
+      app.use('/' + k, routes[k]);
+    }
+  }
+  
+}
+
+module.exports = mount;
