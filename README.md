@@ -11,7 +11,7 @@
 - use config
 - use require-directory
 - use express-di
-
+- auto mount routes with directory
 
 ## route
 
