@@ -20,7 +20,9 @@ exports.list = function (req, res, next) {
 exports.new = function (req, res, next) {
   console.log(req.method + ' /movies/new => new, query: ' + JSON.stringify(req.query));
   
-  res.render('');
+  res.render('movies/new', {
+    movie : {}
+  })
 };
 
 exports.show = function (req, res, next) {
@@ -44,6 +46,17 @@ exports.edit = function (req, res, next) {
 exports.create = function (req, res, next) {
   console.log(req.method + ' /movies => create, query: ' + JSON.stringify(req.query) + 
     ', params: ' + JSON.stringify(req.params) + ', body: ' + JSON.stringify(req.body));
+  
+    Movie.create({
+      name : req.body.name,
+      age : req.body.age,
+    }, function(err, movie){
+      console.log(movie);
+      res.render('movies/show', {
+        movie : movie
+      })
+    });
+   
 };
 
 exports.update = function (req, res, next) {
