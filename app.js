@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // mount routes
 // require('./config/routes')(app);
-mount(app);
+mount(app, __dirname + '/config/routes');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
