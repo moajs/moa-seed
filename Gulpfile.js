@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var mount = require('mount-routes');
 
 require('shelljs/global');
 
@@ -49,4 +50,12 @@ gulp.task('test', function() {
     echo('Error: test failed');
     exit(1);
   }
+});
+
+gulp.task('routes', function() {
+  var express       = require('express');
+  var app           = express();
+  
+  // mount routes
+  mount(app, __dirname + '/app/routes', true);
 });
