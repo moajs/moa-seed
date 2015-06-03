@@ -103,6 +103,8 @@ exports.destroy = function (req, res, next) {
   });
 };
 
+// -- custom
+
 exports.login = function (req, res, next) {
   username = req.body.username;
   password = req.body.password;
