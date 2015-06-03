@@ -3,20 +3,6 @@ var router = express.Router();
 
 var $ = require('../controllers/users_controller');
 var checksession = require('../middlewares/check_session_is_expired');
-/**
- * Auto generate RESTful url routes.
- *
- * URL routes:
- *
- *  GET    /users[/]        => user.list()
- *  GET    /users/new       => user.new()
- *  GET    /users/:id       => user.show()
- *  GET    /users/:id/edit  => user.edit()
- *  POST   /users[/]        => user.create()
- *  PATCH  /users/:id       => user.update()
- *  DELETE /users/:id       => user.destroy()
- *
- */
 
 // -- custom
 router.post('/login' , $.login);  
@@ -32,7 +18,21 @@ router.route('/login')
 router.get('/logout', $.logout);  
 
 
-// -- generated
+/**
+ * Auto generate RESTful url routes.
+ *
+ * URL routes:
+ *
+ *  GET    /users[/]        => user.list()
+ *  GET    /users/new       => user.new()
+ *  GET    /users/:id       => user.show()
+ *  GET    /users/:id/edit  => user.edit()
+ *  POST   /users[/]        => user.create()
+ *  PATCH  /users/:id       => user.update()
+ *  DELETE /users/:id       => user.destroy()
+ *
+ */
+
 router.get('/new', $.new);  
 router.get('/:id/edit', $.edit);
 
