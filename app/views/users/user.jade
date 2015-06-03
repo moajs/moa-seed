@@ -3,7 +3,7 @@
 - var _type   = user._action == 'edit' ? "button"  : "submit"
 - var onClick  = user._action == 'edit' ?  "click_edit('user-" + user._action + "-form','/users/" + user._id + "/')" : ""
 form(id='user-#{ user._action}-form',action="#{_action}", method="#{_method}",role='form')
-  each n in ['user.username','user.password']
+  each n in ['user.username','user.password','user.avatar','user.phone_number','user.address']
     - m = eval(n);
     div(class="field")
       label #{n.split('.')[1]} #{m}

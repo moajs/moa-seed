@@ -7,8 +7,17 @@ var Schema      = mongoose.Schema;
 var MongooseDao = require('mongoosedao');
 
 var userSchema = new Schema(
-    {"username":"string","password":"string"}
+    {"username":"String","password":"String","avatar":"String","phone_number":"String","address":"String"}
 );
+
+userSchema.methods.is_exist = function(cb) {
+  var query;
+  query = {
+    username: this.username,
+    password: this.password
+  };
+  return this.model('User').findOne(query, cb);
+};
 
 var User = mongoose.model('User', userSchema);
 var UserDao = new MongooseDao(User);

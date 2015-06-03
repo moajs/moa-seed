@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var $ = require('../controllers/users_controller');
-
+var checksession = require('../middlewares/check_session_is_expired');
 /**
  * Auto generate RESTful url routes.
  *
@@ -18,6 +18,21 @@ var $ = require('../controllers/users_controller');
  *
  */
 
+// -- custom
+router.post('/login' , $.login);  
+
+router.route('/register')
+  .get($.register_get)
+  .post($.register);
+  
+router.route('/login')
+  .get($.login_get)
+  .post($.login);
+  
+router.get('/logout', $.logout);  
+
+
+// -- generated
 router.get('/new', $.new);  
 router.get('/:id/edit', $.edit);
 

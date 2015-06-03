@@ -57,7 +57,7 @@ exports.create = function (req, res, next) {
   console.log(req.method + ' /users => create, query: ' + JSON.stringify(req.query) + 
     ', params: ' + JSON.stringify(req.params) + ', body: ' + JSON.stringify(req.body));
   
-    User.create({username: req.body.username,password: req.body.password}, function(err, user){
+    User.create({username: req.body.username,password: req.body.password,avatar: req.body.avatar,phone_number: req.body.phone_number,address: req.body.address}, function(err, user){
       console.log(user);
       res.render('users/show', {
         user : user
@@ -72,7 +72,7 @@ exports.update = function (req, res, next) {
     
     var id = req.params.id; 
   
-    User.updateById(id,{username: req.body.username,password: req.body.password}, function(err, user){
+    User.updateById(id,{username: req.body.username,password: req.body.password,avatar: req.body.avatar,phone_number: req.body.phone_number,address: req.body.address}, function(err, user){
       console.log(user);
     
       res.json({
@@ -102,3 +102,72 @@ exports.destroy = function (req, res, next) {
     });
   });
 };
+
+exports.login = function (req, res, next) {
+  username = req.body.username;
+  password = req.body.password;
+  
+  user = new User.model({
+    username: username,
+    password: password
+  });
+  
+  return user.is_exist(function(err, usr) {
+    console.log(usr);
+    console.log(err)
+    
+    var half_hour;
+    if (err) {
+      console.error(err);
+      req.session.current_user = void 0;
+      return res.status(200).json({
+        data: {},
+        status: {
+          code: err.code,
+          msg: err.name + ' : ' + err.err
+        }
+      });
+    } else {
+      req.session.current_user = usr;
+      half_hour = 3600000 / 2;
+      req.session.cookie.expires = new Date(Date.now() + half_hour);
+      req.session.cookie.maxAge = half_hour;
+      console.dir(req.session.current_user);
+      return res.redirect('/');
+    }
+  });
+}
+
+exports.register = function (req, res, next) {
+  username = req.body.username;
+  password = req.body.password;
+  
+  user = new User.model({
+    username: username,
+    password: password
+  });
+  
+  User.create({
+    username: req.body.username,
+    password: req.body.password
+  }, function(err, user){
+    console.log(user);
+    if(err){
+      return res.redirect('/users/register');
+    }else{
+      return res.redirect('/users/login');
+    }
+  });
+}
+
+exports.login_get = function (req, res, next) {
+  res.render('users/login',{});
+}
+
+exports.register_get = function (req, res, next) {
+  res.render('users/register',{});
+}
+
+exports.logout = function (req, res, next) {
+  res.render('users/register',{});
+}
