@@ -5,8 +5,6 @@ var $ = require('../controllers/users_controller');
 var checksession = require('../middlewares/check_session_is_expired');
 
 // -- custom
-router.post('/login' , $.login);  
-
 router.route('/register')
   .get($.register_get)
   .post($.register);
