@@ -12,6 +12,9 @@
 - use require-directory
 - use express-di
 - auto mount routes with directory
+- add cors
+- plain post
+- use bluebird for promise/A+ 
 
 
 ## Cli Tools   
