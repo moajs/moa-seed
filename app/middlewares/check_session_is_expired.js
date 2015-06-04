@@ -6,6 +6,6 @@ module.exports = check_session_is_expired = function(req, res, next) {
     return next();
   } else {
     console.log('no session user')
-    return res.redirect('login');
+    return res.redirect('/users/login');
   }
 };
