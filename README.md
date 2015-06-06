@@ -16,6 +16,7 @@
 - plain post
 - use bluebird for promise/A+ 
 
+- add ueditor.baidu.com
 
 ## Cli Tools   
 
