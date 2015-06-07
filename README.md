@@ -18,18 +18,6 @@
 
 - add ueditor.baidu.com
 
-## MiddleWare
-
-```
-$middlewares['cors']
-$middlewares.cors
-
-app.use($middlewares['cors']);
-
-
-router.get('/new', $middlewares['cors'], $.new);  
-router.get('/:id/edit', $middlewares['cors'], $.edit);
-```
 
 ## Cli Tools   
 

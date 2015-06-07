@@ -14,6 +14,9 @@ require('./config/mongo');
 
 var app = express();
 
+var $middlewares = require('moa-middlewares')(app);
+console.dir($middlewares)
+
 // 支持跨域
 app.use(require('cors')());
 
