@@ -1,6 +1,11 @@
-var check_session_is_expired;
+/*!
+ * Moajs Middle
+ * Copyright(c) 2015-2019 Alfred Sang <shiren1118@126.com>
+ * MIT Licensed
+ */
 
-module.exports = check_session_is_expired = function(req, res, next) {
+// 检查用户会话
+module.exports = function(req, res, next) {
   if (req.session.current_user) {
     console.log('session user=' + req.session.current_user);
     return next();

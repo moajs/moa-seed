@@ -3,10 +3,9 @@
  * Copyright(c) 2015-2019 Alfred Sang <shiren1118@126.com>
  * MIT Licensed
  */
-
-// 支持跨域
+var path = require('path')
+// 定义变量
 module.exports = function (req, res, next) {
-  console.dir('支持跨域');
-  require('cors')();
+  req.server_path = path.join(__dirname, 'public');
   next();
 };

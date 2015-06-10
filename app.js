@@ -5,60 +5,32 @@ var logger        = require('morgan');
 var cookieParser  = require('cookie-parser');
 var bodyParser    = require('body-parser');
 var mount         = require('mount-routes');
-var multer        = require('multer');
-var session       = require('express-session')
-var MongoStore    = require('connect-mongo')(session);
-var mongoose      = require('mongoose');
 
 require('./config/mongo');
 
 var app = express();
 
+app.root_path = __dirname;
+
 var $middlewares = require('moa-middlewares')(app);
-console.dir($middlewares)
 
-// 支持跨域
-app.use(require('cors')());
+// $middlewares.dir();
 
-app.use(function(req, res, next) {
-  req.server_path = path.join(__dirname, 'public');
-  return next();
-});
+// console.dir($middlewares)
 
+$middlewares.mount([
+  'cors',// 支持跨域
+  // 'check_session_is_expired',
+  'variables', // 定义变量
+  'raw_post',
+  'multer',  
+  'session',
+])
+// $middlewares.mount(['cors']);
 
-// for raw data
-app.use(function(req, res, next){
-  if (req.is('text/*')) {
-    req.text = '';
-    req.setEncoding('utf8');
-    req.on('data', function(chunk){ req.text += chunk });
-    req.on('end', next);
-  } else {
-    next();
-  }
-});
+// $middlewares.mount(['cors','mkdir']);
 
-app.use(multer({ 
-	dest: './public/uploads/',
-  rename: function (fieldname, filename) {
-    return filename.replace(/\W+/g, '-').toLowerCase() + Date.now()
-  }
-}))
-
-
-var half_hour = 3600000 / 2;
-
-app.use(session({
-  store: new MongoStore({ mongooseConnection: mongoose.connection }),
-  secret: 'moajs.org@me',
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    secure: false,
-    maxAge: half_hour
-  }
-}));
-
+// app.use($middlewares.cors);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app/views'));
