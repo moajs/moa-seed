@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var $ = require('../controllers/users_controller');
-var checksession = require('../middlewares/check_session_is_expired');
+var $middlewares = require('mount-middlewares');
 
 // -- custom
 router.route('/register')
@@ -10,8 +10,10 @@ router.route('/register')
   .post($.register);
   
 router.route('/login')
-  .get($.login_get)
   .post($.login);
+
+router.get('/login', $middlewares.check_session_is_expired, $.login_get);  
+
   
 router.get('/logout', $.logout);  
 
