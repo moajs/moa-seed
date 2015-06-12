@@ -163,6 +163,11 @@ exports.register = function (req, res, next) {
 }
 
 exports.login_get = function (req, res, next) {
+  // if user logined redirect to home page
+  if(req.session.current_user){
+    return res.redirect('/');
+  }
+  
   res.render('users/login',{});
 }
 
