@@ -32,6 +32,7 @@ todo
 - mount-routes
 - mount-controllers
 - mount-services
+- mount-tasks
 
 ## Cli Tools   
 
