@@ -1,5 +1,7 @@
 # Moa-seed
 
+- [Nodejs RESTFul Practice](http://nodeonly.com/2015/06/09/expressjs-rest.html)
+- [Nodejs RESTFul Api Practice](http://nodeonly.com/2015/06/14/node-restful-api.html)
 
 ## Tech Stack
 
@@ -97,6 +99,9 @@ gulp routes
 }
 ```
 
+### more
+
+see http://nodeonly.com/2015/06/14/node-restful-api.html
 
 ## Contributing
 
