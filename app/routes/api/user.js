@@ -1,18 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var $ = require('../../controllers/users_controller');
-var User = require('../../models/user');
-
-
-
-var $models = require('mount-models');
-console.log('$models list');
-console.log($models);
-
-
-var jwt = require('jsonwebtoken');//用来创建和确认用户信息摘要
-
+var $ = require('mount-controllers').users_controller;
 var $middlewares = require('mount-middlewares');
 
 
