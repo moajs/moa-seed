@@ -16,10 +16,20 @@
 - auto mount routes with directory
 - add cors
 - plain post
-- use bluebird for promise/A+ 
+- use bluebird for promise/A+
+- jsonwebtoken for api
+
+todo
 
 - add ueditor.baidu.com
 
+## Dependence
+
+- moa-middlewares
+- mongoosedao
+- mount-middlewares
+- mount-models
+- mount-routes
 
 ## Cli Tools   
 
