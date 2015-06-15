@@ -56,6 +56,46 @@ gulp routes
 
 ![](doc/images/gulp-routes.png)
 
+## api
+
+### login
+
+    http://127.0.0.1:3019/users/login
+
+### auth
+
+    curl -d "username=sang&password=000000" http://127.0.0.1:3019/api/auth
+
+获取token作为以后的api授权凭证
+
+### 测试获取用户信息接口
+
+    curl http://127.0.0.1:3019/api/user/show?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NTc1OGMyNDhkZDEyMzFmN2FhOTY1ZjMiLCJ1c2VybmFtZSI6InNhbmciLCJwYXNzd29yZCI6IjAwMDAwMCIsImF2YXRhciI6IjExMTExIiwicGhvbmVfbnVtYmVyIjoiIiwiYWRkcmVzcyI6IiIsIl9fdiI6MH0.sqxnKY1ay0NbuRtqzFmDQRH49fFnc_R86GdMsrie6F4
+
+返回结果
+
+```
+// 20150615195329
+// http://127.0.0.1:3019/api/user/show?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NTc1OGMyNDhkZDEyMzFmN2FhOTY1ZjMiLCJ1c2VybmFtZSI6InNhbmciLCJwYXNzd29yZCI6IjAwMDAwMCIsImF2YXRhciI6IjExMTExIiwicGhvbmVfbnVtYmVyIjoiIiwiYWRkcmVzcyI6IiIsIl9fdiI6MH0.sqxnKY1ay0NbuRtqzFmDQRH49fFnc_R86GdMsrie6F4
+
+{
+  "data": {
+    "user": {
+      "_id": "55758c248dd1231f7aa965f3",
+      "username": "sang",
+      "password": "000000",
+      "avatar": "11111",
+      "phone_number": "",
+      "address": "",
+      "__v": 0
+    }
+  },
+  "status": {
+    "code": 0,
+    "msg": "success"
+  }
+}
+```
 
 
 ## Contributing

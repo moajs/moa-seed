@@ -10,9 +10,10 @@ router.route('/register')
   .post($.register);
   
 router.route('/login')
+  // .get($.login_get)
   .post($.login);
-
-router.get('/login', $middlewares.check_session_is_expired, $.login_get);  
+  
+router.get('/login', $.login_get);  
 
   
 router.get('/logout', $.logout);  

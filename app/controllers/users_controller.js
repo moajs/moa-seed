@@ -105,7 +105,7 @@ exports.destroy = function (req, res, next) {
 
 // -- custom
 
-exports.login = function (req, res, next) {
+exports.login = function (req, res, next) {  
   username = req.body.username;
   password = req.body.password;
   
@@ -113,11 +113,11 @@ exports.login = function (req, res, next) {
     username: username,
     password: password
   });
-  
+  console.log(user);
   return user.is_exist(function(err, usr) {
     console.log(usr);
-    console.log(err)
-    
+    console.log(req.session)
+  
     var half_hour;
     if (err) {
       console.error(err);
@@ -163,7 +163,6 @@ exports.register = function (req, res, next) {
 }
 
 exports.login_get = function (req, res, next) {
-  // if user logined redirect to home page
   if(req.session.current_user){
     return res.redirect('/');
   }
@@ -178,3 +177,25 @@ exports.register_get = function (req, res, next) {
 exports.logout = function (req, res, next) {
   res.render('users/register',{});
 }
+
+exports.api = {
+  show: function (req, res, next) {
+    console.log(req.method + ' /users => list, query: ' + JSON.stringify(req.query));
+  
+    var user_id = req.api_user._id;
+    
+    User.one({_id : user_id}, function (err, user) {
+      console.log(user);
+      res.json({
+        data:{
+          user : user
+        },
+        status:{
+          code  : 0,
+          msg   : 'success'
+        }
+      })
+    });
+  }
+}
+
