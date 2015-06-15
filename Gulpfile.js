@@ -32,7 +32,18 @@ gulp.task('default', function() {
     console.log('hello world')
 });
 
-gulp.task('server', function() {
+
+gulp.task('kp', function() {
+  var script = "lsof -i:3019 | xargs killall"
+  if (exec(script).code !== 0) {
+    echo('Error: ' + script + ' failed');
+    exit(1);
+  }
+});
+// 
+
+
+gulp.task('server', ['kp'], function() {
   var sh = "./node_modules/.bin/nodemon bin/www";
   
   // Run external tool synchronously
