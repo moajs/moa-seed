@@ -28,6 +28,7 @@
     "mount-middlewares": "^1.0.1",
     "mount-models": "^1.0.3",
     "mount-routes": "^1.0.3",
+    "mount-services": "^1.0.4",
     "multer": "^0.1.8",
     "nodemailer": "^1.3.4",
     "pm2": "^0.12.15",
