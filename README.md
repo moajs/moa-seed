@@ -30,6 +30,7 @@ todo
 - mount-middlewares
 - mount-models
 - mount-routes
+- mount-controllers
 
 ## Cli Tools   
 
