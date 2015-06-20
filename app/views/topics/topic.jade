@@ -1,0 +1,14 @@
+- var _action = topic._action == 'edit' ? '#' : '/topics/'
+- var _method = topic._action == 'edit' ? ""  : "post"
+- var _type   = topic._action == 'edit' ? "button"  : "submit"
+- var onClick  = topic._action == 'edit' ?  "click_edit('topic-" + topic._action + "-form','/topics/" + topic._id + "/')" : ""
+form(id='topic-#{ topic._action}-form',action="#{_action}", method="#{_method}",role='form')
+  each n in ['topic.title','topic.body','topic.owner']
+    - m = eval(n);
+    div(class="field")
+      label #{n.split('.')[1]} #{m}
+      br
+      input(type='text',name="#{n.split('.')[1]}" ,value="#{ m == undefined ? '' : m }")
+        
+  div(class="actions") 
+    input(type='#{_type}',value='Submit',onClick='#{onClick}')

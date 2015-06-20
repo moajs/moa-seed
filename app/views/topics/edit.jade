@@ -1,0 +1,11 @@
+extends ../layouts/layout
+
+block content
+  h1 Editing topic
+
+  include topic
+
+  a(href='/topics/#{ topic._id}') Show
+  span |
+  a(href='/topics') Back
+

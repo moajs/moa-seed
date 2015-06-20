@@ -1,0 +1,13 @@
+extends ../layouts/layout
+
+block content
+  p#notice
+
+  each n in ['topic.title','topic.body','topic.owner']
+    p
+      strong #{n.split('.')[1]}:
+      span #{eval(n)}
+
+  a(href='/topics/#{ topic._id}/edit') Edit
+  span |
+  a(href='/topics') Back
