@@ -3,7 +3,7 @@ extends ../layouts/layout
 block content
   p#notice
 
-  each n in ['topic.title','topic.body','topic.owner']
+  each n in ['topic.title','topic.body']
     p
       strong #{n.split('.')[1]}:
       span #{eval(n)}

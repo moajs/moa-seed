@@ -31,6 +31,7 @@ exports.show = function (req, res, next) {
   console.log(req.method + ' /topics/:id => show, query: ' + JSON.stringify(req.query) + 
     ', params: ' + JSON.stringify(req.params));
   var id = req.params.id;
+  console.log(id)
   
   Topic.getById(id, function(err, topic) {
     console.log(topic);
@@ -60,7 +61,10 @@ exports.create = function (req, res, next) {
   console.log(req.method + ' /topics => create, query: ' + JSON.stringify(req.query) + 
     ', params: ' + JSON.stringify(req.params) + ', body: ' + JSON.stringify(req.body));
   
-  Topic.create({title: req.body.title,body: req.body.body,owner: req.body.owner}, function (err, topic) {
+  Topic.create({title: req.body.title,body: req.body.body}, function (err, topic) {
+    if(err){
+      console.dir(err);
+    }
     console.log(topic);
     res.render('topics/show', {
       topic : topic
