@@ -5,6 +5,8 @@
  */
 
 // request logger
+// 如果是product环境，置空，提高性能
+// 如果是dev环境，当调用此函数的时候，打出请求日志，以及对应的error
 module.exports = function (req, res, next) {
   // dump request
   
@@ -79,10 +81,23 @@ var type_2 = [
   'UNLINK'
 ]
 
-
+// 
 function request_logger (req) {
   //
-  // if(type_1.toLowerCase().match(//)){
-  //
-  // }
+  var type = type(req);
+  if(type == 1){
+    console.log(req.method + ' /topics/:id => show, query: ' + JSON.stringify(req.query) + 
+    ', params: ' + JSON.stringify(req.params));
+  }else{
+    console.log(req.method + ' /topics => create, query: ' + JSON.stringify(req.query) + 
+    ', params: ' + JSON.stringify(req.params) + ', body: ' + JSON.stringify(req.body));
+  }
+}
+
+function type(req){
+  if(type_1.toLowerCase().split(req.method).length > 0){
+    return 1
+  }else{
+    return 2
+  }
 }
