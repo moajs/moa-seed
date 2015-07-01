@@ -6,13 +6,13 @@ block content
   table
     thead
       tr
-        each n in ['title','body','owner']
+        each n in ['title','body']
           th #{n}
         th(colspan="3")
     tbody
       each topic in topics
         tr
-          each n in ['topic.title','topic.body','topic.owner']
+          each n in ['topic.title','topic.body']
             td #{ eval(n) }
           td 
             a(href='/topics/#{ topic._id}') Show

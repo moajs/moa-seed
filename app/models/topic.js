@@ -1,5 +1,5 @@
 /**
- * Created by alfred on 01/06/14.
+ * Created by alfred on July 1st 2015, 11:52:50 pm.
  */
 
 var mongoose    = require('mongoose');
@@ -7,7 +7,7 @@ var Schema      = mongoose.Schema;
 var MongooseDao = require('mongoosedao');
 
 var topicSchema = new Schema(
-    {"title":"String","body":"String","owner":"ObjectId"}
+    {"title":"String","body":"String"}
 );
 
 var Topic = mongoose.model('Topic', topicSchema);

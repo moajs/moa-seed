@@ -1,5 +1,5 @@
 /**
- * Created by Moajs on 01/06/2015.
+ * Created by Moajs on July 1st 2015, 11:52:50 pm.
  */
 
 var $models = require('mount-models')(__dirname);
@@ -31,7 +31,6 @@ exports.show = function (req, res, next) {
   console.log(req.method + ' /topics/:id => show, query: ' + JSON.stringify(req.query) + 
     ', params: ' + JSON.stringify(req.params));
   var id = req.params.id;
-  console.log(id)
   
   Topic.getById(id, function(err, topic) {
     console.log(topic);
@@ -62,9 +61,6 @@ exports.create = function (req, res, next) {
     ', params: ' + JSON.stringify(req.params) + ', body: ' + JSON.stringify(req.body));
   
   Topic.create({title: req.body.title,body: req.body.body}, function (err, topic) {
-    if(err){
-      console.dir(err);
-    }
     console.log(topic);
     res.render('topics/show', {
       topic : topic
@@ -78,14 +74,14 @@ exports.update = function (req, res, next) {
     
   var id = req.params.id; 
 
-  Topic.updateById(id,{title: req.body.title,body: req.body.body,owner: req.body.owner}, function (err, topic) {
+  Topic.updateById(id,{title: req.body.title,body: req.body.body}, function (err, topic) {
     console.log(topic);
   
     res.json({
-      data:{
+      data: {
         redirect : '/topics/' + id
       },
-      status:{
+      status: {
         code : 0,
         msg  : 'delete success!'
       }
@@ -101,8 +97,8 @@ exports.destroy = function (req, res, next) {
     }
     
     res.json({
-      data:{},
-      status:{
+      data: {},
+      status: {
         code : 0,
         msg  : 'delete success!'
       }
@@ -143,7 +139,7 @@ exports.api = {
   create: function (req, res, next) {
     var user_id = req.api_user._id;
   
-    Topic.create({title: req.body.title,body: req.body.body,owner: req.body.owner}, function (err, topic) {
+    Topic.create({title: req.body.title,body: req.body.body}, function (err, topic) {
       if (err) {
         return res.api_error(err);
       }
@@ -156,7 +152,7 @@ exports.api = {
   update: function (req, res, next) {
     var user_id = req.api_user._id;
     var id = req.params.topic_id; 
-    Topic.updateById(id, {title: req.body.title,body: req.body.body,owner: req.body.owner}, function (err, topic) {
+    Topic.updateById(id, {title: req.body.title,body: req.body.body}, function (err, topic) {
       if (err) {
         return res.api_error(err);
       }
@@ -176,7 +172,7 @@ exports.api = {
         return res.api_error(err);
       }
     
-      res.api({id:id})
+      res.api({id: id})
     });
   }
 }
