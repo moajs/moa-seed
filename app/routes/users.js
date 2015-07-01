@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-var $ = require('mount-controllers').users_controller;
+var $ = require('mount-controllers')(__dirname).users_controller;
 
-var $middlewares = require('mount-middlewares');
+var $middlewares = require('mount-middlewares')(__dirname);
 
 // -- custom
 router.route('/register')

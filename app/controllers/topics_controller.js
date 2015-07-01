@@ -2,7 +2,7 @@
  * Created by Moajs on 01/06/2015.
  */
 
-var $models = require('mount-models');
+var $models = require('mount-models')(__dirname);
 
 var Topic = $models.topic;
 
