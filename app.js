@@ -23,12 +23,11 @@ var $middlewares = require('moa-middlewares')(app);
 // console.dir($middlewares)
 
 $middlewares.mount([
-  'api',// 支持跨域
   // 'check_session_is_expired',
   'variables', // 定义变量
   'raw_post',
   'multer',  
-  'session',
+  'session'
 ])
 // $middlewares.mount(['cors']);
 

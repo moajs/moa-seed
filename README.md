@@ -34,7 +34,24 @@ todo
 - mount-services
 - mount-tasks
 
-## Cli Tools   
+## Create project from template
+
+new a project in cli
+
+    moan new_project
+    
+## Gulp Tasks
+
+
+```
+gulp routes
+```
+
+![](doc/images/gulp-routes.png)
+
+## Scaffold
+
+### Use cli create scaffold with model
 
 1.create scaffold user
 
@@ -52,26 +69,25 @@ mongoose支持的data type基本如下：
 • Mixed  -> mixed
 • Array -> array
 
-    
-    
+
 2.destroy scaffold user,this will move user to `~/.moajs/xxxx`
 
     moad user
-    
-3.new a project in cli
 
-    moan new_project
-    
-## Gulp Tasks
+### Auto generate RESTful url routes.
+
+for examples, topic is current model
+
+- GET    /topics[/]        => topic.list()
+- GET    /topics/new       => topic.new()
+- GET    /topics/:id       => topic.show()
+- GET    /topics/:id/edit  => topic.edit()
+- POST   /topics[/]        => topic.create()
+- PATCH  /topics/:id       => topic.update()
+- DELETE /topics/:id       => topic.destroy()
 
 
-```
-gulp routes
-```
-
-![](doc/images/gulp-routes.png)
-
-## api
+## Api
 
 ### login
 
@@ -82,6 +98,11 @@ gulp routes
     curl -d "username=sang&password=000000" http://127.0.0.1:3019/api/auth
 
 获取token作为以后的api授权凭证
+
+获取请求api接口，可以通过header或参数授权
+
+  //检查post的信息或者url查询参数或者头信息
+  var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
 ### 测试获取用户信息接口
 
@@ -111,6 +132,16 @@ gulp routes
   }
 }
 ```
+
+### restful api 5 methods
+
+比如模型是topic
+
+- GET     /api/topics/              显示所有
+- POST    /api/topics/              创建并返回json结果
+- GET     /api/topics/:topic_id     获取详情，并返回json结果
+- PATCH   /api/topics/:topic_id     修改并返回json结果
+- DELETE  /api/topics/:topic_id     删除并返回json结果
 
 ### more
 
