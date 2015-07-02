@@ -5,10 +5,14 @@ var logger        = require('morgan');
 var cookieParser  = require('cookie-parser');
 var bodyParser    = require('body-parser');
 var mount         = require('mount-routes');
+var res_api       = require('res.api');
 
 require('./config/mongo');
 
 var app = express();
+
+// global api
+app.use(res_api);
 
 app.root_path = __dirname;
 
