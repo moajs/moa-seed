@@ -30,3 +30,6 @@ public/uploads
 
 # core config
 config/default.json
+
+# app
+app/*
