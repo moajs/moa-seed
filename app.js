@@ -6,11 +6,10 @@ var cookieParser  = require('cookie-parser');
 var bodyParser    = require('body-parser');
 var mount         = require('mount-routes');
 var res_api       = require('res.api');
+var current_path  = process.cwd();
 
-require('./config/mongo');
 
-var current_path = process.cwd();
-
+require(current_path + '/config/mongo');
 console.log(current_path)
 
 var app = express();
