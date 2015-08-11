@@ -9,6 +9,10 @@ var res_api       = require('res.api');
 
 require('./config/mongo');
 
+var current_path = process.cwd();
+
+console.log(current_path)
+
 var app = express();
 
 // global api
@@ -36,7 +40,7 @@ $middlewares.mount([
 // app.use($middlewares.cors);
 
 // view engine setup
-app.set('views', path.join(__dirname, 'app/views'));
+app.set('views', path.join(current_path, '/app/views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
@@ -49,7 +53,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // mount routes
 // require('./config/routes')(app);
-mount(app, __dirname + '/app/routes');
+mount(app, current_path + '/app/routes');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
