@@ -29,7 +29,7 @@ node_modules
 public/uploads
 
 # core config
-config/default.json
+config/mongodb.js
 
 # app
 app/*
