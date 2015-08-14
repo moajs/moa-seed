@@ -2,11 +2,22 @@ var connectionString, db, mongoose, options;
 
 mongoose = require('mongoose');
 
-var config = require('config');
-var host  = config.get('mongodb.host');
-var port  = config.get('mongodb.port');
-var db    = config.get('mongodb.db');
+mongoose = require('mongoose');
 
+
+var config   = require('./config/mongodb');
+var port     = config.port;
+var db       = config.db;
+var host;
+
+var is_debug = config.is_debug;
+if(is_debug) {
+  console.log('\033[32m提醒:debug状态连接数据库:\033[39m');
+  host  = config.host;
+}else{
+  console.log('\033[91m警告:非debug状态连接数据库:\033[39m');
+  host  = config.host;
+}
 
 connectionString = 'mongodb://' + host + ':' + port + '/' + db + '';
 

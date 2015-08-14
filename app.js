@@ -9,7 +9,7 @@ var res_api       = require('res.api');
 var current_path  = process.cwd();
 
 
-require(current_path + '/config/mongo');
+require(current_path + '/db');
 console.log(current_path)
 
 var app = express();
