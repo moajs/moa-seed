@@ -18,10 +18,8 @@
 - plain post
 - use bluebird for promise/A+
 - jsonwebtoken for api
+- use log4js for logger
 
-todo
-
-- add ueditor.baidu.com
 
 ## Dependence
 
