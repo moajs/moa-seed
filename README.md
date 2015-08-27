@@ -32,6 +32,21 @@
 - mount-services
 - mount-tasks
 
+## Run
+
+```
+git clone https://github.com/moajs/moa-seed.git
+npm install
+npm install --save moa-plugin-user
+npm start
+```
+
+open browser
+
+```
+http://127.0.0.1:3029
+```
+
 ## Create project from template
 
 new a project in cli
