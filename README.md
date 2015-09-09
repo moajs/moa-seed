@@ -104,11 +104,11 @@ for examples, topic is current model
 
 ### login
 
-    http://127.0.0.1:3019/users/login
+    http://127.0.0.1:3029/users/login
 
 ### auth
 
-    curl -d "username=sang&password=000000" http://127.0.0.1:3019/api/auth
+    curl -d "username=sang&password=000000" http://127.0.0.1:3029/api/auth
 
 获取token作为以后的api授权凭证
 
@@ -119,13 +119,13 @@ for examples, topic is current model
 
 ### 测试获取用户信息接口
 
-    curl http://127.0.0.1:3019/api/user/show?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NTc1OGMyNDhkZDEyMzFmN2FhOTY1ZjMiLCJ1c2VybmFtZSI6InNhbmciLCJwYXNzd29yZCI6IjAwMDAwMCIsImF2YXRhciI6IjExMTExIiwicGhvbmVfbnVtYmVyIjoiIiwiYWRkcmVzcyI6IiIsIl9fdiI6MH0.sqxnKY1ay0NbuRtqzFmDQRH49fFnc_R86GdMsrie6F4
+    curl http://127.0.0.1:3029/api/user/show?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NTc1OGMyNDhkZDEyMzFmN2FhOTY1ZjMiLCJ1c2VybmFtZSI6InNhbmciLCJwYXNzd29yZCI6IjAwMDAwMCIsImF2YXRhciI6IjExMTExIiwicGhvbmVfbnVtYmVyIjoiIiwiYWRkcmVzcyI6IiIsIl9fdiI6MH0.sqxnKY1ay0NbuRtqzFmDQRH49fFnc_R86GdMsrie6F4
 
 返回结果
 
 ```
 // 20150615195329
-// http://127.0.0.1:3019/api/user/show?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NTc1OGMyNDhkZDEyMzFmN2FhOTY1ZjMiLCJ1c2VybmFtZSI6InNhbmciLCJwYXNzd29yZCI6IjAwMDAwMCIsImF2YXRhciI6IjExMTExIiwicGhvbmVfbnVtYmVyIjoiIiwiYWRkcmVzcyI6IiIsIl9fdiI6MH0.sqxnKY1ay0NbuRtqzFmDQRH49fFnc_R86GdMsrie6F4
+// http://127.0.0.1:3029/api/user/show?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NTc1OGMyNDhkZDEyMzFmN2FhOTY1ZjMiLCJ1c2VybmFtZSI6InNhbmciLCJwYXNzd29yZCI6IjAwMDAwMCIsImF2YXRhciI6IjExMTExIiwicGhvbmVfbnVtYmVyIjoiIiwiYWRkcmVzcyI6IiIsIl9fdiI6MH0.sqxnKY1ay0NbuRtqzFmDQRH49fFnc_R86GdMsrie6F4
 
 {
   "data": {
